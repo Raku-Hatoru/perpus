@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 24, 2026 at 08:39 AM
+-- Generation Time: Mar 24, 2026 at 10:15 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -45,8 +45,15 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`id`, `isbn`, `title`, `author`, `publisher`, `year`, `stock`, `cover_image`, `category_id`) VALUES
 (1, '978-602-8519-93-9', 'how to be good lawyer', 'haq', 'haq', '2023', 6, NULL, 5),
-(2, '978-602-1234-56-7', 'How to be a good it support', 'elang', 'elang', '2005', 100, NULL, 4),
-(3, '978-979-1234-56-8', 'hilang timbul', 'tera lie', 'tera lie', '2026', 5, NULL, 3);
+(2, '978-602-1234-56-7', 'How to be a good it support', 'elang', 'elang', '2005', 100, '', 4),
+(3, '978-979-1234-56-8', 'hilang timbul', 'tera lie', 'tera lie', '2026', 5, NULL, 3),
+(4, '978-602-0332-15-4', 'Struktur Data dan Algoritma dengan PHP', 'Haq', 'Haq', '2026', 0, 'https://penerbit.stekom.ac.id/public/journals/12/article_288_cover_en_US.jpg', 4),
+(5, '978-602-0523-11-8', 'Dasar-Dasar Keamanan Siber untuk Pemula', 'elang', 'elang', '2026', 5, 'https://down-id.img.susercontent.com/file/id-11134207-7rbk9-m71yhod7u8os81_tn', 4),
+(6, '978-979-1234-56-7', 'Rekayasa Perangkat Lunak Modern', 'inas', 'inas', '2026', 3, 'https://www.davefarley.net/wp-content/uploads/2022/01/Modern-Software-Engineering.png', 4),
+(7, '978-602-8888-21-0', 'https://cdn.gramedia.com/uploads/items/tuntunan_praktis.jpg', 'Raku', 'Gramedia', '2026', 4, 'https://cdn.gramedia.com/uploads/items/tuntunan_praktis.jpg', 4),
+(8, '978-623-0103-92-1', 'Mastering Laravel 11 untuk Web Developer', 'Cofe', 'Gramedia', '2026', 2, 'https://cdn.gramedia.com/uploads/products/ebnrzta-cn.jpg', 4),
+(9, '978-602-4444-12-9', 'Arsitektur Microservices di Lingkungan Cloud', 'elang', 'Gramedia', '2026', 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO0C39iexcyfGNDARHjPlSiNTXjaJ0Aqesdg&s', 4),
+(10, '978-979-9999-01-2', 'Logika Matematika dan Pemrograman Linear', 'elang', 'Gramedia', '2026', 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDvg28S_ZNRJTi5V86JhsypVTF-4WPhfnKQg&s', 4);
 
 -- --------------------------------------------------------
 
@@ -88,6 +95,15 @@ CREATE TABLE `loans` (
   `fine_amount` decimal(10,2) DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `loans`
+--
+
+INSERT INTO `loans` (`id`, `user_id`, `book_id`, `loan_date`, `due_date`, `return_date`, `status`, `fine_amount`) VALUES
+(1, 3, 6, '2026-03-24', '2026-03-31', '2026-03-24', 'returned', 0.00),
+(2, 3, 2, '2026-03-01', '2026-03-10', '2026-03-24', 'returned', 14000.00),
+(3, 3, 10, '2026-03-24', '2026-03-31', NULL, 'borrowed', 0.00);
+
 -- --------------------------------------------------------
 
 --
@@ -110,7 +126,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `created_at`) VALUES
 (3, 'haq', '$2y$10$aHxx1HUAK9PFV5NIAp11QOpjYERqvKTlMfgxY0jX/w2o66wIgx66O', 'msholahatulhaq@gmail.com', 'member', '2026-03-15 15:04:45'),
 (4, 'Romy', '$2y$10$I.P104/Rz./945B1ytw/Nee4UwVdNHXDbMmV1hjEyxfUtm9zXbD7i', '123@gmail.com', 'admin', '2026-03-15 15:10:31'),
-(5, 'admin', '$2y$10$QiyUimOpPpCIRbeSzxY9aecM8PENIu92STZAPKcaIZjrl/SvuIr/a', 'admin123@gmail.com', 'admin', '2026-03-23 13:41:29');
+(5, 'admin', '$2y$10$QiyUimOpPpCIRbeSzxY9aecM8PENIu92STZAPKcaIZjrl/SvuIr/a', 'admin123@gmail.com', 'admin', '2026-03-23 13:41:29'),
+(7, 'haq1', '$2y$10$C.NmyubS9by2KJtVAzCWL.m6/xQCgtQy/aDwfKf9f0F5DAzokDPXG', 'msholahatulha@gmail.com', 'member', '2026-03-24 09:58:46'),
+(8, 'haq2', '$2y$10$/4Bi9gmE4a7HZryowyRoS.SMME7Sa.0vVzUUEJHRzZbItlvwhLNFy', '123456@gmail.com', 'member', '2026-03-24 09:59:10'),
+(9, 'haq4', '$2y$10$E1waUuhJFFoRB1/Jf.r4U./qlhMpeKHRas6pSs/Ds3vBWTN1LWi.W', '234567@gmail.com', 'member', '2026-03-24 09:59:29');
 
 -- --------------------------------------------------------
 
@@ -125,6 +144,13 @@ CREATE TABLE `waitlists` (
   `status` enum('waiting','notified','resolved') DEFAULT 'waiting',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `waitlists`
+--
+
+INSERT INTO `waitlists` (`id`, `user_id`, `book_id`, `status`, `created_at`) VALUES
+(1, 3, 4, 'waiting', '2026-03-24 10:07:07');
 
 --
 -- Indexes for dumped tables
@@ -176,7 +202,7 @@ ALTER TABLE `waitlists`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -188,19 +214,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `waitlists`
 --
 ALTER TABLE `waitlists`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
