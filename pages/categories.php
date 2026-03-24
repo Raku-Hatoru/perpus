@@ -105,7 +105,7 @@ renderPageStart('Kelola Kategori', [
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
                     <div>
                         <div class="section-title">Daftar Kategori</div>
-                        <div class="table-subtext">Setiap kategori menampilkan jumlah buku yang terkait dan dibatasi 10 data per halaman.</div>
+                        <div class="table-subtext">Buku yang ditampilkan hanya 10.</div>
                     </div>
                     <form method="GET" action="categories.php" class="w-100 search-form-compact">
                         <div class="search-box input-group">

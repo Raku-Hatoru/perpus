@@ -27,8 +27,8 @@ class CategoryModel extends BaseModel
         $search = $this->buildSearchClause($keyword);
         $sql .= $search['sql'];
         $sql .= ' GROUP BY c.id, c.name, c.description
-                  ORDER BY c.name ASC
-                  LIMIT :limit OFFSET :offset';
+                ORDER BY c.name ASC
+                LIMIT :limit OFFSET :offset';
 
         $stmt = $this->db->prepare($sql);
 
